@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .page {
+            margin:auto;
+            width: auto;
+            max-width: 50%;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 30px;
+            height: auto;
+            background-color: white;
+            border: 5px solid rgb(0, 255, 0);
+        }
+        #answer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <p><b>Zadanie</b></p>
+        <p>Oblicz objętość walca o wysokości <i style="color:rgb(0, 255, 0)">H</i>, 
+            gdzie podstawa to koło o promieniu <i style="color:rgb(0, 255, 0)">r</i></p>
+        <p><b>Dane wejściowe:</b></p>
+        <p>H = <input type="number" id="H" oninput="count()"></p>
+        <p>r = <input type="number" id="r" oninput="count()"></p>
+        <p><b>Rysunek</b></p>
+        <svg width="250" height="300">
+            <ellipse cx="125" cy="50" rx="100" ry="30"style="fill:white; stroke:black; stroke-width:2" />
+            <ellipse cx="125" cy="200" rx="100" ry="30"style="fill:white; stroke:black; stroke-width:2" />
+            <line x1="25" y1="50" x2="25" y2="200" style="stroke:black;stroke-width:2" />
+            <line x1="225" y1="50" x2="225" y2="200" style="stroke:black;stroke-width:2" />
+            <line x1="125" y1="200" x2="225" y2="200" style="stroke:black;stroke-width:1;stroke-dasharray:3,3" />
+            <line x1="125" y1="200" x2="125" y2="50" style="stroke:black;stroke-width:1;stroke-dasharray:3,3" />
+            <text x="130" y="125" fill="red" font-size="20" id="H2">H</text>
+            <text x="175" y="195" fill="red" font-size="20" id="r2">r</text>
+        </svg>
+        <div id="answer">
+            <p><b>Rozwiązanie</b></p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mrow>
+                    <mi>V</mi>
+                    <mo>=</mo>
+                    <mi>&pi;</mi>
+                    <msup>
+                        <mi>r</mi>
+                        <mn>2</mn>
+                    </msup>
+                    <mi>H</mi>
+                    <mo>=</mo>
+                    <mn>&pi;</mn>
+                    <mi>&middot;</mi>
+                    <mn id="r1">0</mn>
+                    <mi>&middot;</mi>
+                    <mn id="H1">0</mn>
+                    <mo>=</mo>
+                    <mn id="res">0</mn>
+                </mrow>
+            </math>
+        </div>
+    </div>
+    <script>
+    function count() {
+        var H = document.getElementById("H").value;
+        var r = document.getElementById("r").value;
+        var result = r*r*3.14*H
+        if(r>0 && H>0){
+            document.getElementById("H2").innerHTML = "H="+H;
+            document.getElementById("r2").innerHTML = "r="+r;
+
+            document.getElementById("r1").innerHTML = r;
+            document.getElementById("r1").innerHTML = r;
+            document.getElementById("H1").innerHTML = H;
+            document.getElementById("res").innerHTML = result;
+            document.getElementById("answer").style.display="inline";
+        } else{
+            document.getElementById("answer").style.display="none";
+        }
+    }
+    </script>
+</body>
+</html>
